@@ -41,7 +41,7 @@ Start by collecting all the images needed to install Rancher in an air gap envir
 
         ```plain
         helm fetch stable/cert-manager
-        helm template ./cert-manager-<version>.tgz | grep -oP '(?<=image: ").*(?=")' >> ./rancher-images.txt
+        helm template ./cert-manager-<version>.tgz | grep -oP '((?<=image: ")|(?<=image: ))[^"\n\r\t\s]+' >> ./rancher-images.txt
         ```
 
     2. Sort and unique the images list to remove any overlap between the sources.
